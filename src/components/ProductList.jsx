@@ -36,7 +36,6 @@ const ProductList = () => {
           onSelectionChange={(e) => saveProduct(e.value._id)}
           footer={footer}
         >
-          <Column field="_id" header="Id" />
           <Column field="name" header="Nombre" />
           <Column field="price" header="Precio" />
           <Column field="expiry_date" header="Fecha de Caducidad" />
