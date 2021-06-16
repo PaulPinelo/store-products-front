@@ -5,10 +5,17 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { InputNumber } from "primereact/inputnumber";
 import { Calendar } from "primereact/calendar";
+import { Toast } from 'primereact/toast';
+import {useRef} from 'react';
 
 const ProductForm = (props) => {
   const { isVisible, setIsVisible } = props;
 
+  const myToast = useRef(null);
+  const showToast = (severityValue, summaryValue, detailValue) => {   
+    myToast.current.show({severity: severityValue, summary: summaryValue, detail: detailValue, life: 1000});   
+  }
+  
   const {
     createProduct,
     deleteProduct,
@@ -47,8 +54,10 @@ const ProductForm = (props) => {
   const saveProduct = () => {
     if (!editProduct) {
       createProduct(productData);
+      showToast('success', 'Producto guardado', productData.name);
     } else {
       updateProduct(productData);
+      showToast('success', 'Producto actualizado', productData.name);
     }
     setProductData(initialProductState);
     setIsVisible(false);
@@ -68,6 +77,7 @@ const ProductForm = (props) => {
 
   return (
     <div>
+      <Toast ref={myToast} /> 
       <Dialog
         visible={isVisible}
         modal={true}
