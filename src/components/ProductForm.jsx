@@ -7,6 +7,7 @@ import { InputNumber } from "primereact/inputnumber";
 import { Calendar } from "primereact/calendar";
 import { Toast } from 'primereact/toast';
 import {useRef} from 'react';
+import { confirmPopup } from 'primereact/confirmpopup';
 
 const ProductForm = (props) => {
   const { isVisible, setIsVisible } = props;
@@ -63,10 +64,22 @@ const ProductForm = (props) => {
     setIsVisible(false);
   };
 
+  const confirm = (event) => {
+    confirmPopup({
+      target: event.currentTarget,
+        message: 'Esta seguro(a) que quiere eliminar este producto?',
+        icon: 'pi pi-exclamation-triangle',
+        accept: () => _deleteProduct(),
+        reject: () => {return;},
+        acceptLabel: "Si",
+        rejectLabel: "No"
+    });
+  }
+
   const dialogFooter = (
     <div className="ui-dialog-buttonpane p-clearfix">
-      <Button label="Delete" icon="pi pi-times" onClick={_deleteProduct} />
-      <Button label="Save" icon="pi pi-check" onClick={saveProduct} />
+      <Button label="Eliminar" icon="pi pi-times" className="p-button-danger" onClick={confirm} />
+      <Button label="Guardar" icon="pi pi-check" onClick={saveProduct} />
     </div>
   );
 
