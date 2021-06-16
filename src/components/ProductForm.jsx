@@ -19,7 +19,7 @@ const ProductForm = (props) => {
   const initialProductState = {
     _id: null,
     name: "",
-    price: 0,
+    price: null,
     expiry_date: null,
   };
 
@@ -34,8 +34,6 @@ const ProductForm = (props) => {
       ...productData,
       [field]: data,
     });
-
-    console.log(productData);
   };
 
   const _deleteProduct = () => {
@@ -84,7 +82,7 @@ const ProductForm = (props) => {
           <div className="p-float-label">
             <InputText
               value={productData.name}
-              onChange={(e) => updateField(e.target.value.trim(), "name")}
+              onChange={(e) => updateField(e.target.value, "name")}
             />
             <label>Nombre:</label>
           </div>
@@ -92,9 +90,11 @@ const ProductForm = (props) => {
           <div className="p-float-label">
             <InputNumber
               value={productData.price}
-              onChange={(e) => updateField(e.target.value, "price")}
-              mode="currency"
-              currency="PEN"
+              onChange={(e) => updateField(e.value, "price")}
+              mode="decimal"
+              minFractionDigits={2}
+              maxFracionDigits={2}
+              prefix="S/"
             />
             <label>Precio:</label>
           </div>
