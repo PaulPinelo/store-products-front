@@ -2,7 +2,7 @@
   "name": "store-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://PaulPinelo.github.io/react-consume-api",
+  "homepage": "https://PaulPinelo.github.io/store-products-front",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",

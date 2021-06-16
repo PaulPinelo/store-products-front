@@ -19,7 +19,7 @@ const ProductList = () => {
   const footer = (
     <div className="p-clearfix" style={{ width: "100%" }}>
       <Button
-        style={{ float: "left" }}
+
         icon="pi pi-plus"
         label="Add"
         onClick={() => setIsVisible(true)}
