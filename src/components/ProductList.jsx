@@ -26,7 +26,7 @@ const ProductList = () => {
     <div className="p-clearfix" style={{ width: "100%" }}>
       <Button
         icon="pi pi-plus"
-        label="Add"
+        label="Agregar"
         onClick={() => setIsVisible(true)}
       />
     </div>
